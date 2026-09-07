@@ -7,9 +7,9 @@ public class Score {
     private Compra compra;
     private int score;
     private Status status;
-    private String motivo ;
+    
     public Score(){}
-    public Score(Compra compra, int score, Status status, String motivo) {
+    public Score(Compra compra, int score, Status status ) {
         this.compra = compra;
         this.score = score;
         this.status = status;
@@ -35,7 +35,7 @@ public class Score {
        if(status == Status.APROVADO || status == Status.REPROVADO || status == Status.AGUARDANDO_CONFIRMACAO){
     this.status = status;
 } else {
-                System.out.println("Status inválido.");
+                throw new IllegalArgumentException("Status inválido");
         }
     }
     
@@ -75,10 +75,10 @@ public int validarData(Compra compra) {
         return validarValor(compra) + validarData(compra) + validarLocalizacao(compra) + validarEstabelecimento(compra);
     }
     public Status definirStatus(double score){
-        if(score >= 70){
+        if(score >= 90){
             return  Status.REPROVADO;
         }
-        else if(score >= 40){
+        else if(score >= 60){
             return Status.AGUARDANDO_CONFIRMACAO;
 
         }
@@ -86,19 +86,6 @@ public int validarData(Compra compra) {
         return Status.APROVADO;        
     }
     }
-    public String definirMotivo(Status status){
-       if(status == Status.APROVADO){
-    return "Compra aprovada.";
-} else if(status == Status.AGUARDANDO_CONFIRMACAO){
-    return "Aguardando confirmação do cliente.";
-} else {
-    return "Compra reprovada por conta de risco.";
-}
-    }
-    public String getMotivo() {
-        return motivo;
-    }
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
+    
+  
 }

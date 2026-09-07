@@ -25,7 +25,7 @@ private String produto;
         if(produto.length() > 0){
             this.produto = produto;
         } else {
-            System.out.println("Produto inválido. Não pode ser vazio.");
+             throw new IllegalArgumentException("Produto inválido. Não pode ser vazio.");
         }
     }
     public double getValor() {
@@ -35,7 +35,7 @@ private String produto;
         if(valor > 0){
             this.valor = valor;
         } else {
-            System.out.println("Valor inválido. Deve ser maior que zero.");
+            throw new IllegalArgumentException("Valor inválido. Deve ser maior que zero.");
         }
     }
     public Cartao getCartao() {
@@ -54,7 +54,7 @@ private String produto;
        if(estabelecimento.length() > 0){
             this.estabelecimento = estabelecimento;
         } else {
-            System.out.println("Estabelecimento inválido. Não pode ser vazio.");
+            throw new IllegalArgumentException("Estabelecimento inválido. Não pode ser vazio.");
         }
     }
     public String getLocalizacao() {
@@ -64,7 +64,7 @@ private String produto;
         if(localizacao.length() > 0){
             this.localizacao = localizacao;
         } else {
-            System.out.println("Localização inválida. Não pode ser vazio.");
+             throw new IllegalArgumentException("Localização inválida. Não pode ser vazio.");
         }
     }
 

@@ -18,7 +18,7 @@ public class Cliente {
         if(nome.length() > 0){
             this.nome = nome;
         } else {
-            System.out.println("Nome inválido. Não pode ser vazio.");
+            throw new IllegalArgumentException("Nome inválido. Não pode ser vazio.");
         }
     }
     public String getCpf() {
@@ -28,7 +28,7 @@ public class Cliente {
         if(cpf.length() == 11){
             this.cpf = cpf;
         } else {
-            System.out.println("CPF inválido. Deve conter 11 dígitos.");
+             throw new IllegalArgumentException("CPF inválido. Deve conter 11 dígitos.");
         }
     }
     public String getEmail() {
@@ -38,7 +38,7 @@ public class Cliente {
        if(email.contains("@gmail.com") || email.contains("@hotmail.com") || email.contains("@yahoo.com")){
             this.email = email;
         } else {
-            System.out.println("Email inválido. Deve conter '@'.");
+             throw new IllegalArgumentException("Email inválido. Deve conter '@'.");
         }
     }
     public String getTelefone() {
@@ -48,7 +48,7 @@ public class Cliente {
         if(telefone.length() == 11){
             this.telefone = telefone;
         } else {
-            System.out.println("Telefone inválido. Deve conter 11 dígitos.");
+             throw new IllegalArgumentException("Telefone inválido. Deve conter 11 dígitos.");
         }
     }
     

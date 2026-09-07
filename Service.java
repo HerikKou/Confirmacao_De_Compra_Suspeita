@@ -14,16 +14,16 @@ int estabelecimento = score.validarEstabelecimento(compra);
 int calculoScore = score.cacularScore(compra);
 Status status = score.definirStatus(calculoScore);
 
-Score resultado = new Score(compra, calculoScore, status, score.definirMotivo(status));
+Score resultado = new Score(compra, calculoScore, status);
 
 if (resultado.getStatus() == Status.AGUARDANDO_CONFIRMACAO) {
     Notificacao notificacao = new Notificacao(resultado, 5);
     notificacao.confirmar();
     Status statusFinal = notificacao.resolverStatusFinal(resultado, notificacao);
     resultado.setStatus(statusFinal);
-    System.out.println("Status: " + resultado.getStatus() + ", Resposta: " + notificacao.getResposta());
+     throw new IllegalArgumentException("Status: " + resultado.getStatus() + ", Resposta: " + notificacao.getResposta());
 } else {
-    System.out.println("Status: " + resultado.getStatus() + " (decidido direto pelo score, sem necessidade de confirmação)");
+    throw new IllegalArgumentException("Status: " + resultado.getStatus() + " (decidido direto pelo score, sem necessidade de confirmação)");
 }
 
 
